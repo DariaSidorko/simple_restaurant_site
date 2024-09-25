@@ -143,6 +143,13 @@ nav a:hover {
     width: 100%;
 }
 
+.carousel-slide {
+    display: none; /* Hide all images by default */
+}
+.carousel-slide.active {
+    display: block; /* Show the active image */
+}
+
 .carousel-button {
     position: absolute;
     top: 50%;
@@ -304,15 +311,19 @@ footer {
 </nav>
 <section id="carousel">
   <h2>Our New Desserts:</h2>
-    <div class="carousel-container">
-        <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1702742322469-36315505728f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1">
-            <img src="https://images.unsplash.com/photo-1518704512655-a5a68b5f0ce5?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 2" style="display: none;">
-            <img src="https://images.unsplash.com/photo-1720443000362-d868d5c2a56d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 3" style="display: none;">
-        </div>
-        <button id="prev" class="carousel-button">&#8678;</button>
-        <button id="next" class="carousel-button">&#8680;</button>
+  <section id="carousel">
+    <div class="carousel-slide active">
+        <img src="https://images.unsplash.com/photo-1702742322469-36315505728f?q=80&w=2940&auto=format&fit=crop" alt="Image 1">
     </div>
+    <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1518704512655-a5a68b5f0ce5?q=80&w=2940&auto=format&fit=crop" alt="Image 2">
+    </div>
+    <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1720443000362-d868d5c2a56d?q=80&w=2940&auto=format&fit=crop" alt="Image 3">
+    </div>
+    <button id="prev" class="carousel-button">&#8678;</button>
+    <button id="next" class="carousel-button">&#8680;</button>
+</section>
 </section>
 <section id="menu">  
   <h2>Our Menu</h2>
@@ -358,24 +369,36 @@ footer {
   });
   
 
-  $(document).ready(function() {
+  const slides = document.querySelectorAll('.carousel-slide');
+  console.log(slides)
     let currentIndex = 0;
-    const images = $('#carousel .carousel-slide img');
-    const totalImages = images.length;
+    
 
-    $('#next').on('click', function() {
-        images.eq(currentIndex).hide();
-        currentIndex = (currentIndex + 1) % totalImages; // Loop back to first
-        images.eq(currentIndex).show();
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            console.log(slide.classList)
+            slide.classList.toggle('active', i === index);
+        });
+    }
+
+    document.getElementById('next').addEventListener('click', function() {
+        console.log(currentIndex)
+        currentIndex = (currentIndex + 1) % slides.length; // Move to next slide
+        showSlide(currentIndex);
+
     });
 
-    $('#prev').on('click', function() {
-        images.eq(currentIndex).hide();
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages; 
-        images.eq(currentIndex).show();
+    document.getElementById('prev').addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Move to previous slide
+        showSlide(currentIndex);
     });
-  });
+
+    // Show the first slide initially
+    showSlide(currentIndex);
 
 </script>
+
+</body>
+
 
 </body>
