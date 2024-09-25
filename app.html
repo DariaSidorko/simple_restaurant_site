@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<head>
+<script src="/assets/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Girassol&family=Lilita+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Girassol&family=Lilita+One&family=Zeyada&display=swap" rel="stylesheet">
+<style>
+
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: rgb(20, 20, 20);
+}
+
+#menu div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+
+h1 {
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: 75px;
+  color: #d9b99b;
+  margin: 60px 0 0 0;
+}
+
+.main-header{
+  font-family: "Zeyada", cursive;
+  font-weight: 400;
+  font-style: normal; 
+  font-size: 35px;
+  color: #a69279;
+}
+
+h2 {
+  text-align: center;
+  color: #e2cbb0;
+  margin: 0px 0 20px 0;
+}
+
+section {
+  padding: 20px 0;
+}
+
+section p {
+  color: rgba(255,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+section p:hover {
+  cursor:pointer;
+  padding-top: 11px;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.5));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.5));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.5));
+}
+
+small {
+  opacity: 0;
+}
+
+
+nav ul {
+  padding: 10px;
+  background: rgba(0,0,0,0);
+  border-bottom: 1px solid rgb(255, 255, 255, 0.5);
+}
+nav li {
+  display: inline;
+}
+
+nav a {
+ color: rgb(255, 255, 255, 0.7);
+ text-decoration: none;
+ padding: 10px;
+}
+
+nav a:hover {
+ color: rgb(255, 255, 255, 0.7);
+ text-decoration: none;
+ background: rgb(255, 255, 255, 0.1);
+ padding: 10px;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://plus.unsplash.com/premium_photo-1718821752763-ba625f9feec0?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+.second{
+  background-image: url("https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?q=80&w=2371&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+.dessert{
+  background-image: url("https://images.unsplash.com/photo-1469533778471-92a68acc3633?q=80&w=2371&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+.coctail{
+  background-image: url("https://images.unsplash.com/photo-1469533778471-92a68acc3633?q=80&w=2371&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+
+.price {
+  float: right;
+}
+
+#carousel {
+    position: relative;
+    max-width:90%;
+    margin: 20px auto;
+    overflow: hidden;
+    
+}
+
+.carousel-container {
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 30px  15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.carousel-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 35px  15px;
+}
+
+#prev {
+    left: 5px;
+}
+
+#next {
+    right: 5px;
+}
+
+#contact {
+ padding: 80px 0px 0px 0px ;
+}
+
+#contact-form {
+    max-width: 400px;
+    margin: 0 auto 80px auto;
+    padding: 40px;
+    border: 2px solid rgb(30, 30, 30);
+    border-radius: 5px;
+    background: rgb(30, 30, 30)
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: regular;
+    color: rgb(255, 255, 255, 0.8);
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contact-form button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#contact-form button:hover {
+    background: #555;
+}
+
+#response {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: green;
+}
+
+footer {
+    background: rgb(30, 30, 30);
+    color: rgb(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 2px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+  
+  section {
+    padding: 5px 0;
+  }
+
+
+  h1 {
+    font-size: 40px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  
+  .main-header{
+    font-size: 25px;
+
+  }
+
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+  
+  #carousel {
+    max-width:100%;
+    
+  }
+  
+  .carousel-button {
+      padding: 20px  10px;
+      cursor: pointer;
+      border-radius: 5px;
+  }
+  
+  .carousel-button:hover {
+      padding: 25px  10px;
+  }
+  #prev {
+      left: 15px;
+  }
+  
+  #next {
+      right: 15px;
+  }
+  
+
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>VKUSNO FOOD </h1>
+<h2 class="main-header">Best local eatery</h2>
+
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+</nav>
+<section id="carousel">
+  <h2>Our New Desserts:</h2>
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1702742322469-36315505728f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1">
+            <img src="https://images.unsplash.com/photo-1518704512655-a5a68b5f0ce5?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 2" style="display: none;">
+            <img src="https://images.unsplash.com/photo-1720443000362-d868d5c2a56d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 3" style="display: none;">
+        </div>
+        <button id="prev" class="carousel-button">&#8678;</button>
+        <button id="next" class="carousel-button">&#8680;</button>
+    </div>
+</section>
+<section id="menu">  
+  <h2>Our Menu</h2>
+  <div class="first">
+    <p>seared scallops with pomegranate and meyer lemon <span class="price">$14</span><br />
+    <small>Our chef Ori Menashe serves shallow bowls of scallop aguachile, and diners can't get enough Our riff on cheff's raw dish sends scallops to the skillet for a quick sear before serving them with pomegranate arils, cucumbers, orange segments, and lemon segments </small></p>
+  </div>
+  
+  <div class="second">
+    <p>fetuccine alfredo <span class="price">$22</span><br />
+    <small>A classic, rich and creamy sauce tossed with garlic Parmesan and Romano cheeses with chicken or shrimp.</small></p>
+  </div>
+    
+  <div class="dessert">
+    <p>blueberry pound cake <span class="price">$8</span><br />
+    <small>Our pound cake is moist and positively mouth-watering! Baked with juicy blueberries, have it as dessert or even at breakfast!.</small></p>
+  </div>
+</section>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <form id="contact-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <label for="message">Message:</label>
+    <textarea id="message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+ <div id="response"></div>
+</section>
+
+<footer>
+  <p>&copy; 2024 My Restaurant. All rights reserved.</p>
+</footer>
+
+<script>
+  
+  $(document).ready(function() {
+    $('div').on('click', function() {
+        $(this).toggleClass('show-description');
+    });
+  });
+  
+
+  $(document).ready(function() {
+    let currentIndex = 0;
+    const images = $('#carousel .carousel-slide img');
+    const totalImages = images.length;
+
+    $('#next').on('click', function() {
+        images.eq(currentIndex).hide();
+        currentIndex = (currentIndex + 1) % totalImages; // Loop back to first
+        images.eq(currentIndex).show();
+    });
+
+    $('#prev').on('click', function() {
+        images.eq(currentIndex).hide();
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages; 
+        images.eq(currentIndex).show();
+    });
+  });
+
+</script>
+
+</body>
